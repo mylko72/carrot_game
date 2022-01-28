@@ -25,6 +25,7 @@ class PlayGame {
         if(this.clickSound === null){
             this.clickSound = this.createSound('sound/carrot_pull.mp3');
         }
+        console.log(this.clickSound)
         this.clickSound.play();
 
         if(this.counter === 0 && this.counter < this.timer){
@@ -101,6 +102,8 @@ class PlayGame {
     fail(printMessage){
         this.clickSound = this.createSound('sound/bug_pull.mp3');
         this.clickSound.play();
+        this.clickSound = null;
+        
         setTimeout(() => {
             this.stop(printMessage);
         }, 500);
