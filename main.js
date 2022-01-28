@@ -9,6 +9,9 @@ const fieldRect = playField.getBoundingClientRect();
 class PlayGame {
     constructor(settings){
         this.setId = null;
+        this.bgSound = null;
+        this.clickSound = null;
+        this.alertSound = null;
         this.counter = settings.counter;
         this.timer = settings.timer;
         this.item1 = settings.item1;
@@ -18,6 +21,11 @@ class PlayGame {
     addScore(){
         this.counter--;
         playCounter.textContent = this.counter;
+
+        if(this.clickSound === null){
+            this.clickSound = this.createSound('sound/carrot_pull.mp3');
+        }
+        this.clickSound.play();
 
         if(this.counter === 0 && this.counter < this.timer){
             clearInterval(this.setId);
@@ -32,6 +40,9 @@ class PlayGame {
         controlBtn.classList.replace('play', 'stop');
         this.addItems();
         this.startTimer();
+
+        this.bgSound = this.createSound('sound/bg.mp3');
+        this.bgSound.play();
     }
 
     replay(settings){
@@ -46,12 +57,21 @@ class PlayGame {
     stop(printMessage){
         clearInterval(this.setId);
         this.alertPop(printMessage)
-    }    
+    }   
+    
+    createSound(src){
+        const audio = document.createElement("audio");
+        audio.src = src;
+        return audio;
+    }
 
     alertPop(callback){
         layerPop.classList.add('active');
         callback();
-        //showMessage(message);
+
+        this.alertSound = this.createSound('sound/alert.wav');
+        this.alertSound.play();
+        this.bgSound.pause();
     }
 
     startTimer(){
@@ -78,8 +98,12 @@ class PlayGame {
         playField.appendChild(newItem);
     }
 
-    addBug(){
-
+    fail(printMessage){
+        this.clickSound = this.createSound('sound/bug_pull.mp3');
+        this.clickSound.play();
+        setTimeout(() => {
+            this.stop(printMessage);
+        }, 500);
     }
 
     create(className) {
@@ -130,7 +154,7 @@ playField.addEventListener('click', (e) => {
     }
 
     if(e.target.classList.contains('bug')){
-        game1.stop(printLost);
+        game1.fail(printLost);
     }
 })
 
