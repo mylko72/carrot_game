@@ -1,7 +1,7 @@
 html, body {height:100%;}
 body {background:#000;overflow:hidden;}
 * {margin:0;padding:0;box-sizing:border-box;}
-.game_stage {position:relative;width:860px;height:520px;margin:20px auto 0;padding:10px;border-radius:10px;background:#000 url(./img/background.png) no-repeat;background-size:cover;text-align:center;}
+.game_stage {position:relative;width:860px;height:520px;margin:20px auto 0;padding:10px;border-radius:10px;background:#000 url(./img/background.png) center/cover;text-align:center;}
 .control_btn {width:36px;height:36px;margin:auto;border:2px solid #000;border-radius:5px;background-color:#FFCCBC;background-repeat:no-repeat;background-position:center center;background-size:26px 26px;image-rendering:-webkit-optimize-contrast;outline:none;cursor:pointer}
 .control_btn.play {background-image:url(./img/ico_play.png);}
 .control_btn.stop {background-image:url(./img/ico_stop.png);}

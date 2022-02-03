@@ -25,12 +25,11 @@ class PlayGame {
         if(this.clickSound === null){
             this.clickSound = this.createSound('sound/carrot_pull.mp3');
         }
-        console.log(this.clickSound)
         this.clickSound.play();
 
         if(this.counter === 0 && this.counter < this.timer){
             clearInterval(this.setId);
-            this.alertPop(printWin);
+            this.alertPop(printWin, 'sound/game_win.mp3');
         }
     }
 
@@ -57,7 +56,7 @@ class PlayGame {
 
     stop(printMessage){
         clearInterval(this.setId);
-        this.alertPop(printMessage)
+        this.alertPop(printMessage, 'sound/alert.wav')
     }   
     
     createSound(src){
@@ -66,12 +65,13 @@ class PlayGame {
         return audio;
     }
 
-    alertPop(callback){
+    alertPop(callback, soundSrc){
         layerPop.classList.add('active');
         callback();
 
-        this.alertSound = this.createSound('sound/alert.wav');
+        this.alertSound = this.createSound(soundSrc);
         this.alertSound.play();
+
         this.bgSound.pause();
     }
 
@@ -81,7 +81,7 @@ class PlayGame {
             if(this.timer == 0){
                 console.log('timeout');
                 clearInterval(this.setId);
-                this.alertPop(printLost);
+                this.alertPop(printLost, 'sound/alert.wav');
             }
             playTimer.textContent = `00:0${this.timer}`;
         }, 1000);
@@ -103,7 +103,7 @@ class PlayGame {
         this.clickSound = this.createSound('sound/bug_pull.mp3');
         this.clickSound.play();
         this.clickSound = null;
-        
+
         setTimeout(() => {
             this.stop(printMessage);
         }, 500);
