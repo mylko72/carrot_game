@@ -2,17 +2,19 @@ html, body {height:100%;}
 body {background:#000;overflow:hidden;}
 * {margin:0;padding:0;box-sizing:border-box;}
 .game_stage {position:relative;width:860px;height:520px;margin:20px auto 0;padding:10px;border-radius:10px;background:#000 url(./img/background.png) center/cover;text-align:center;}
-.control_btn {width:36px;height:36px;margin:auto;border:2px solid #000;border-radius:5px;background-color:#FFCCBC;background-repeat:no-repeat;background-position:center center;background-size:26px 26px;image-rendering:-webkit-optimize-contrast;outline:none;cursor:pointer}
-.control_btn.play {background-image:url(./img/ico_play.png);}
-.control_btn.stop {background-image:url(./img/ico_stop.png);}
-.control_btn.replay {background-image:url(./img/ico_reload.png);}
-.control_btn:hover {transform:scale(1.2);}
+.game_btn {width:36px;height:36px;margin:auto;border:2px solid #000;border-radius:5px;background-color:#FFCCBC;background-repeat:no-repeat;background-position:center center;background-size:26px 26px;image-rendering:-webkit-optimize-contrast;outline:none;cursor:pointer}
+.game_btn.play {background-image:url(./img/ico_play.png);}
+.game_btn.stop {background-image:url(./img/ico_stop.png);}
+.game_btn.pop_up_refesh {background-image:url(./img/ico_reload.png);}
+.game_btn:hover {transform:scale(1.2);}
 .play_timer {width:100px;height:30px;margin:10px auto 0;border:2px solid #000;border-radius:5px;background-color:#fff;font-size:20px;color:#000;line-height:26px;font-weight:bold;}
-.play_counter {width:50px;height:50px;margin:10px auto 0;border:2px solid #000;border-radius:50%;background-color:#FF8A65;font-size:32px;color:#fff;font-weight:bold;}
+.play_counter {width:50px;height:50px;margin:10px auto 0;border:2px solid #000;border-radius:50%;background-color:#FF8A65;font-size:32px;color:#fff;font-weight:bold;line-height:50px;}
 .play_field {position:absolute;left:0;bottom:0;width:100%;height:260px;}
-.carrot {position:absolute;width:80px;height:80px;background:url(./img/carrot.png) no-repeat;background-size:80px 80px;cursor:pointer;}
-.bug {position:absolute;width:50px;height:50px;background:url(./img/bug.png) no-repeat;background-size:50px 50px;cursor:pointer;}
-.layer_pop {display:none;position:absolute;left:50%;bottom:60px;width:300px;height:100px;padding:10px;border-radius:10px;background:rgba(0,0,0,.4);transform:translateX(-50%);}
-.layer_pop.active {display:block;}
-.layer_pop .txt_message {font-size:26px;color:#fff;}
-.layer_pop .txt_message > span {color:red;}
+.carrot {position:absolute;width:80px;height:80px;background:url(./img/carrot.png) no-repeat;background-size:80px 80px;cursor:pointer;transition:transform 100ms ease-in;}
+.bug {position:absolute;width:50px;height:50px;background:url(./img/bug.png) no-repeat;background-size:50px 50px;cursor:pointer;transition:transform 100ms ease-in;}
+.carrot:hover,
+.bug:hover {transform:scale(1.1)}
+.pop_up {display:none;position:absolute;left:50%;bottom:60px;width:300px;height:100px;padding:10px;border-radius:10px;background:rgba(0,0,0,.4);transform:translateX(-50%);}
+.pop_up.active {display:block;}
+.pop_up .pop_up_message {font-size:26px;color:#fff;}
+.pop_up .pop_up_message > span {color:red;}
